@@ -1,4 +1,5 @@
 import "./index.scss";
+import { RightComponent } from "./RightComponent";
 
 export const HomeScreen = () => {
   return (
@@ -8,12 +9,13 @@ export const HomeScreen = () => {
           <img src="logo.png" />
           <h1>Code Desk</h1>
           <h2>Code.Compile.Debug</h2>
-          <button>Create New Playground</button>
+          <button>
+            <span class="material-icons">add</span>
+            <span>Create Playground</span>
+          </button>
         </div>
       </div>
-      <div className="right-container">
-        <h1>right container</h1>
-      </div>
+      <RightComponent />
     </div>
   );
 };
