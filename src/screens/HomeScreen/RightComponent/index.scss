@@ -61,12 +61,16 @@
     }
     .cards-container {
       padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
       .card {
         display: flex;
         border-radius: 10px;
         box-shadow: 2px 2px 5px gray;
         cursor: pointer;
-        width: 40%;
+        width: 43%;
         gap: 10px;
         justify-content: space-between;
         align-items: center;
@@ -81,7 +85,7 @@
           }
         }
         img {
-          //   width: 60px;
+            width: 40px;
         }
       }
       .card:hover {
