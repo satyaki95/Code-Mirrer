@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 export const PlaygroundContext = createContext();
 
@@ -28,15 +28,50 @@ const intialdata = [
     ],
   },
 ];
+
+const defaultCodes = {
+  cpp: `#include <bits/stdc++.h>`,
+  java: `public class Main {
+    public static void main(String[] args) {
+      System.out.println("Hello, World");
+    }
+  }`,
+  javascript: `console.log("Hello, World");`,
+  python: `print("Hello, World")`,
+};
+
 export const PlaygroundProvider = ({ children }) => {
   const [folders, setFolders] = useState(intialdata);
+
+  const createNewPlayground = (newPlayground) => {
+    const { folderName, fileName, language } = newPlayground;
+    const newFolders = [...folders];
+    newFolders.push({
+      id: uuidv4(),
+      title: folderName,
+      files: [
+        {
+          id: uuidv4(),
+          title: fileName,
+          code: defaultCodes[language],
+        },
+      ],
+    });
+    localStorage.setItem("data", JSON.stringify(newFolders));
+    setFolders(newFolders);
+  };
 
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(folders));
   }, []);
 
+  const playgroundFeatures = {
+    folders,
+    createNewPlayground,
+  };
+
   return (
-    <PlaygroundContext.Provider value={folders}>
+    <PlaygroundContext.Provider value={playgroundFeatures}>
       {children}
     </PlaygroundContext.Provider>
   );

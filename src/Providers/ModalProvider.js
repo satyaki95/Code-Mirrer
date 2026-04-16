@@ -5,13 +5,13 @@ export const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
   const [modalType, setModalType] = useState(null);
 
-  const closeMoadal = () => {
+  const closeModal = () => {
     setModalType(null);
   };
 
   const modalFeatures = {
     openModal: setModalType,
-    closeMoadal,
+    closeModal,
     activeModal: modalType,
   };
 

@@ -41,7 +41,7 @@ const Folder = ({ folderTitle, cards }) => {
 };
 
 export const RightComponent = () => {
-  const folders = useContext(PlaygroundContext);
+  const { folders } = useContext(PlaygroundContext);
 
   return (
     <div className="right-container">
