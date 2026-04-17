@@ -35,14 +35,14 @@ export const CreatePlaygroundModal = () => {
         <h1>Create New Playground</h1>
         <div className="item">
           <p>Enter Folder Name</p>
-          <input name="folderName" />
+          <input name="folderName" required />
         </div>
         <div className="item">
           <p>Enter Card Name</p>
-          <input name="fileName" />
+          <input name="fileName" required />
         </div>
         <div className="item">
-          <select name="language">
+          <select name="language" required>
             <option value="cpp">CPP</option>
             <option value="java">Java</option>
             <option value="javascript">JavaScript</option>

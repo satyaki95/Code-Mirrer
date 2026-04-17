@@ -41,7 +41,13 @@ const defaultCodes = {
 };
 
 export const PlaygroundProvider = ({ children }) => {
-  const [folders, setFolders] = useState(intialdata);
+  const [folders, setFolders] = useState(() => {
+    const localData = localStorage.getItem("data");
+    if (localData) {
+      return JSON.parse(localData);
+    }
+    return intialdata;
+  });
 
   const createNewPlayground = (newPlayground) => {
     const { folderName, fileName, language } = newPlayground;
@@ -54,6 +60,7 @@ export const PlaygroundProvider = ({ children }) => {
           id: uuidv4(),
           title: fileName,
           code: defaultCodes[language],
+          language: language,
         },
       ],
     });
@@ -62,7 +69,9 @@ export const PlaygroundProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(folders));
+    if (!localStorage.getItem("data")) {
+      localStorage.setItem("data", JSON.stringify(folders));
+    }
   }, []);
 
   const playgroundFeatures = {

@@ -26,7 +26,7 @@ const Folder = ({ folderTitle, cards }) => {
               <img src="logo-small.png" />
               <div className="title-container">
                 <span>{file?.title}</span>
-                <span>Language: {file?.langauge}</span>
+                <span>Language: {file?.language}</span>
               </div>
               <div className="title-container-icons">
                 <span className="material-icons delete">delete</span>
