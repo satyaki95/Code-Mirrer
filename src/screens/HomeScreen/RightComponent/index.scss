@@ -1,5 +1,7 @@
 .right-container {
   padding: 20px;
+  height: 100vh;
+  overflow: scroll;
   .add {
     color: #0000ff;
     cursor: pointer;
@@ -32,6 +34,7 @@
       align-items: center;
       border: none;
       background-color: white;
+      cursor: pointer;
     }
     .title {
       font-weight: 600;
@@ -56,6 +59,7 @@
           border: none;
           display: flex;
           align-items: center;
+          cursor: pointer;
         }
       }
     }

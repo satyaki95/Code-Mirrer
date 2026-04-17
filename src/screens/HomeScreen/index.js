@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { Modal } from "../../Providers/Modals/Modal";
 import "./index.scss";
 import { RightComponent } from "./RightComponent";
-import { ModalContext } from "../../Providers/ModalProvider";
+import { modalConstants, ModalContext } from "../../Providers/ModalProvider";
 
 export const HomeScreen = () => {
   const modalFeatures = useContext(ModalContext);
   const openCreatePlaygroundModal = () => {
     // open create playground modal
-    modalFeatures.openModal("CREATE_PLAYGROUND");
+    modalFeatures.openModal(modalConstants.CREATE_PLAYGROUND);
   };
   return (
     <div className="home-container">
