@@ -3,7 +3,13 @@ import "./index.scss";
 import { PlaygroundContext } from "../../../Providers/PlaygroundProvider";
 import { modalConstants, ModalContext } from "../../../Providers/ModalProvider";
 
-const Folder = ({ folderTitle, cards }) => {
+const Folder = ({ folderTitle, cards, id }) => {
+  const { deleteFolder } = useContext(PlaygroundContext);
+
+  const onDeleteFolder = () => {
+    deleteFolder(id);
+  };
+
   return (
     <div className="folder-container">
       <div className="folder-header">
@@ -12,7 +18,9 @@ const Folder = ({ folderTitle, cards }) => {
           <span>{folderTitle}</span>
         </div>
         <div className="folder-header-item">
-          <span className="material-icons delete">delete</span>
+          <span className="material-icons delete" onClick={onDeleteFolder}>
+            delete
+          </span>
           <span className="material-icons edit">edit</span>
           <button>
             <span className="material-icons add">add</span>
@@ -66,6 +74,7 @@ export const RightComponent = () => {
             folderTitle={folder?.title}
             cards={folder?.files}
             key={folder.id}
+            id={folder.id}
           />
         );
       })}
