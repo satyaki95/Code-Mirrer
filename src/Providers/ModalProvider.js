@@ -2,13 +2,12 @@ import { createContext, useState } from "react";
 
 export const ModalContext = createContext();
 
-
 export const modalConstants = {
   CREATE_PLAYGROUND: "CREATE_PLAYGROUND",
   CREATE_FOLDER: "CREATE_FOLDER",
   UPDATE_FOLDER_TITLE: "UPDATE_FOLDER_TITLE",
-  
-}
+  UPDATE_FILE_TITLE: "UPDATE_FILE_TITLE",
+};
 
 export const ModalProvider = ({ children }) => {
   const [modalType, setModalType] = useState(null);
@@ -25,7 +24,7 @@ export const ModalProvider = ({ children }) => {
     closeModal,
     activeModal: modalType,
     modalPayload,
-    setModalPayload
+    setModalPayload,
   };
 
   return (

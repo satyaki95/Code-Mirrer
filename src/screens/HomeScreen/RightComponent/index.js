@@ -3,17 +3,17 @@ import "./index.scss";
 import { PlaygroundContext } from "../../../Providers/PlaygroundProvider";
 import { modalConstants, ModalContext } from "../../../Providers/ModalProvider";
 
-const Folder = ({ folderTitle, cards, id }) => {
+const Folder = ({ folderTitle, cards, folderId }) => {
   const { deleteFolder } = useContext(PlaygroundContext);
   const { openModal, setModalPayload } = useContext(ModalContext);
 
   const onDeleteFolder = () => {
-    deleteFolder(id);
+    deleteFolder(folderId);
   };
 
   const onEditFolderTitle = () => {
     // open update folder title modal
-    setModalPayload(id);
+    setModalPayload(folderId);
     openModal(modalConstants.UPDATE_FOLDER_TITLE);
   };
 
@@ -39,6 +39,10 @@ const Folder = ({ folderTitle, cards, id }) => {
       </div>
       <div className="cards-container">
         {cards?.map((file, index) => {
+          const onEditFileTitle = () => {
+            setModalPayload({ folderId: folderId, fileId: file.id });
+            openModal(modalConstants.UPDATE_FILE_TITLE);
+          };
           return (
             <div className="card" key={index}>
               <img src="logo-small.png" />
@@ -48,7 +52,9 @@ const Folder = ({ folderTitle, cards, id }) => {
               </div>
               <div className="title-container-icons">
                 <span className="material-icons delete">delete</span>
-                <span className="material-icons edit">edit</span>
+                <span className="material-icons edit" onClick={onEditFileTitle}>
+                  edit
+                </span>
               </div>
             </div>
           );
@@ -83,7 +89,7 @@ export const RightComponent = () => {
             folderTitle={folder?.title}
             cards={folder?.files}
             key={folder.id}
-            id={folder.id}
+            folderId={folder.id}
           />
         );
       })}
