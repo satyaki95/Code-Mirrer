@@ -4,7 +4,7 @@ import { PlaygroundContext } from "../../../Providers/PlaygroundProvider";
 import { modalConstants, ModalContext } from "../../../Providers/ModalProvider";
 
 const Folder = ({ folderTitle, cards, folderId }) => {
-  const { deleteFolder } = useContext(PlaygroundContext);
+  const { deleteFolder, deleteFile } = useContext(PlaygroundContext);
   const { openModal, setModalPayload } = useContext(ModalContext);
 
   const onDeleteFolder = () => {
@@ -43,6 +43,11 @@ const Folder = ({ folderTitle, cards, folderId }) => {
             setModalPayload({ folderId: folderId, fileId: file.id });
             openModal(modalConstants.UPDATE_FILE_TITLE);
           };
+
+          const onDeleteFile = () => {
+            deleteFile(folderId, file.id);
+          };
+
           return (
             <div className="card" key={index}>
               <img src="logo-small.png" />
@@ -51,7 +56,9 @@ const Folder = ({ folderTitle, cards, folderId }) => {
                 <span>Language: {file?.language}</span>
               </div>
               <div className="title-container-icons">
-                <span className="material-icons delete">delete</span>
+                <span className="material-icons delete" onClick={onDeleteFile}>
+                  delete
+                </span>
                 <span className="material-icons edit" onClick={onEditFileTitle}>
                   edit
                 </span>
