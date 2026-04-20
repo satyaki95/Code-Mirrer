@@ -29,7 +29,7 @@ const intialdata = [
   },
 ];
 
-const defaultCodes = {
+export const defaultCodes = {
   cpp: `#include <bits/stdc++.h>`,
   java: `public class Main {
     public static void main(String[] args) {
@@ -133,6 +133,18 @@ export const PlaygroundProvider = ({ children }) => {
     setFolders(updatedFoldersList);
   };
 
+  const createPlayground = (folderId, file) => {
+    const updatedFoldersList = folders.map((folderItem) => {
+      if (folderItem.id === folderId) {
+        folderItem.files.push(file);
+      }
+      return folderItem;
+    });
+
+    localStorage.setItem("data", JSON.stringify(updatedFoldersList));
+    setFolders(updatedFoldersList);
+  };
+
   useEffect(() => {
     if (!localStorage.getItem("data")) {
       localStorage.setItem("data", JSON.stringify(folders));
@@ -147,6 +159,7 @@ export const PlaygroundProvider = ({ children }) => {
     editFolderTitle,
     editFileTitle,
     deleteFile,
+    createPlayground,
   };
 
   return (

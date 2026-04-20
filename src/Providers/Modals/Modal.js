@@ -4,6 +4,7 @@ import { CreatePlaygroundModal } from "./CreatePlaygroundModal";
 import { CreateFolderModal } from "./CreateFolderModal";
 import { UpdateFolderTitleModel } from "./UpdateFolderTitleModel";
 import { UpdateFileTitleModal } from "./UpdateFileTitleModal";
+import { CreateCardModal } from "./CreateCardModal";
 
 export const Modal = () => {
   const modalFeatures = useContext(ModalContext);
@@ -21,6 +22,9 @@ export const Modal = () => {
       )}
       {modalFeatures?.activeModal === modalConstants.UPDATE_FILE_TITLE && (
         <UpdateFileTitleModal />
+      )}
+      {modalFeatures?.activeModal === modalConstants.CREATE_CARD && (
+        <CreateCardModal />
       )}
     </>
   );
