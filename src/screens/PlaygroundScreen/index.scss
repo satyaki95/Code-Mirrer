@@ -1,0 +1,28 @@
+.playground-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .content-container {
+    padding: 20px;
+    background-color: orange;
+    flex-grow: 1;
+  }
+  .logo {
+    height: 80px;
+  }
+  .header-container {
+    display: flex;
+    justify-content: center;
+    background-color: #1e1e1e;
+    padding: 2px 0;
+  }
+  .input-container,
+  .output-container {
+    border: 1px solid green;
+    
+  }
+  .editor-container {
+    border: 1px solid orange;
+    
+  }
+}
