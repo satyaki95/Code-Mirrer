@@ -2,10 +2,16 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  .icon-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 4px;
+  }
   .content-container {
-    padding: 20px;
-    background-color: orange;
     flex-grow: 1;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
   }
   .logo {
     height: 80px;
@@ -16,13 +22,39 @@
     background-color: #1e1e1e;
     padding: 2px 0;
   }
-  .input-container,
-  .output-container {
-    border: 1px solid green;
-    
+  .input-output-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    .input-header {
+      background-color: #ededed;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        display: none;
+      }
+    }
+    textarea {
+      flex-grow: 1;
+      border: none;
+      resize: none;
+      padding: 10px;
+      font-size: 20px;
+    }
+    textarea:focus {
+      outline: none;
+    }
+    button{
+      border: none;
+      background: none;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+    }
   }
   .editor-container {
-    border: 1px solid orange;
-    
+    grid-row: 1/3;
   }
 }

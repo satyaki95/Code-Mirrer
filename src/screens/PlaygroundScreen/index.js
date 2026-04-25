@@ -12,8 +12,27 @@ export const PlaygroundScreen = () => {
       </div>
       <div className="content-container">
         <div className="editor-container">Editor Container</div>
-        <div className="input-container">Input Container</div>
-        <div className="output-container">Output Container</div>
+        <div className="input-output-container">
+          <div className="input-header">
+            <b>Input:</b>
+            <label htmlFor="input" className="icon-container">
+              <span className="material-icons">cloud_upload</span>
+              <b className="">Import Input</b>
+            </label>
+            <input type="file" id="input" />
+          </div>
+          <textarea></textarea>
+        </div>
+        <div className="input-output-container">
+          <div className="input-header">
+            <b>Output:</b>
+            <button className="icon-container">
+              <span className="material-icons">cloud_download</span>
+              <b>Export Output</b>
+            </button>
+          </div>
+          <textarea readOnly></textarea>
+        </div>
       </div>
     </div>
   );
