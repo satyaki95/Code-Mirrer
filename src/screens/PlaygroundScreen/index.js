@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import "./index.scss";
+import { EditorContainer } from "./EditorContainer";
 
 export const PlaygroundScreen = () => {
   const params = useParams();
@@ -11,7 +12,9 @@ export const PlaygroundScreen = () => {
         <img src="/logo.png" className="logo" />
       </div>
       <div className="content-container">
-        <div className="editor-container">Editor Container</div>
+        <div className="editor-container">
+          <EditorContainer />
+        </div>
         <div className="input-output-container">
           <div className="input-header">
             <b>Input:</b>

@@ -11,6 +11,8 @@
   .content-container {
     flex-grow: 1;
     display: grid;
+    // gap: 20px;
+    // padding: 10px;
     grid-template-columns: 3fr 2fr;
   }
   .logo {

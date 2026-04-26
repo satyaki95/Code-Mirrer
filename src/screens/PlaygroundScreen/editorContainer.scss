@@ -1,0 +1,74 @@
+.root-editor-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .editor-header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    button,
+    select {
+      border: none;
+      padding: 7px 10px;
+      border-radius: 5px;
+      background-color: #d1e3e0;
+    }
+    select:focus {
+      outline: none;
+    }
+    button {
+      background-color: #32e1c7;
+      cursor: pointer;
+      transition-duration: 0.5s;
+    }
+    button:hover {
+      background-color: #03917b;
+    }
+    .title {
+      font-size: 20px;
+    }
+  }
+
+  .editor-body {
+    // background-color: black;
+    flex-grow: 1;
+  }
+  .editor-left-container,
+  .editor-right-container {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+  }
+  .editor-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      display: none;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border-radius: 5px;
+      border: none;
+      padding: 4px 10px;
+      gap: 10px;
+      cursor: pointer;
+      transition-duration: 0.5s;
+    }
+    .btn:hover{
+        background-color: #7e8886;
+    }
+    .run-code {
+      background-color: #32e1c7;
+    //   transition-duration: 0.5s;
+    }
+    .run-code:hover {
+      background-color: #03917b;
+    }
+  }
+}
