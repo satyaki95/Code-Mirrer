@@ -10,7 +10,7 @@ const intialdata = [
       {
         id: uuidv4(),
         title: "index",
-        langauge: "cpp",
+        language: "cpp",
         code: `#include <bits/stdc++.h>`,
       },
     ],
@@ -22,7 +22,7 @@ const intialdata = [
       {
         id: uuidv4(),
         title: "test",
-        langauge: "javascript",
+        language: "javascript",
         code: `console.log("Hello World")`,
       },
     ],
@@ -145,6 +145,49 @@ export const PlaygroundProvider = ({ children }) => {
     setFolders(updatedFoldersList);
   };
 
+  const getDefaultCode = (fileId, folderId) => {
+    for (let i = 0; i < folders.length; i++) {
+      if (folders[i].id === folderId) {
+        for (let j = 0; j < folders[i].files.length; j++) {
+          const currentFile = folders[i].files[j];
+          if (fileId === currentFile.id) {
+            return currentFile.code;
+          }
+        }
+      }
+    }
+  };
+
+  const getLanguage = (fileId, folderId) => {
+    for (let i = 0; i < folders.length; i++) {
+      if (folders[i].id === folderId) {
+        for (let j = 0; j < folders[i].files.length; j++) {
+          const currentFile = folders[i].files[j];
+          if (fileId === currentFile.id) {
+            return currentFile.language;
+          }
+        }
+      }
+    }
+  };
+
+  const updateLanguage = (fileId, folderId, language) => {
+    const newFolders = [...folders];
+    for (let i = 0; i < newFolders.length; i++) {
+      if (newFolders[i].id === folderId) {
+        for (let j = 0; j < newFolders[i].files.length; j++) {
+          const currentFile = newFolders[i].files[j];
+          if (fileId === currentFile.id) {
+            newFolders[i].files[j].code = defaultCodes[language];
+            newFolders[i].files[j].language = language;
+          }
+        }
+      }
+    }
+    localStorage.setItem("data", JSON.stringify(newFolders));
+    setFolders(newFolders);
+  };
+
   useEffect(() => {
     if (!localStorage.getItem("data")) {
       localStorage.setItem("data", JSON.stringify(folders));
@@ -160,6 +203,9 @@ export const PlaygroundProvider = ({ children }) => {
     editFileTitle,
     deleteFile,
     createPlayground,
+    getDefaultCode,
+    getLanguage,
+    updateLanguage,
   };
 
   return (

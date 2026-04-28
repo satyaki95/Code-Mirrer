@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "./editorContainer.scss";
 import Editor from "@monaco-editor/react";
+import { PlaygroundContext } from "../../Providers/PlaygroundProvider";
 
 const editorOption = {
   fontSize: 18,
@@ -14,11 +15,19 @@ const fileExtensionMapping = {
   java: "java",
 };
 
-export const EditorContainer = () => {
-  const [code, setCode] = useState("");
-  const [language, setLanguage] = useState("cpp");
+export const EditorContainer = ({ fileId, folderId }) => {
+  const { getDefaultCode, getLanguage, updateLanguage } =
+    useContext(PlaygroundContext);
+
+  const [code, setCode] = useState(() => {
+    return getDefaultCode(fileId, folderId);
+  });
+
+  const [language, setLanguage] = useState(() => {
+    return getLanguage(fileId, folderId);
+  });
   const [theme, setTheme] = useState("vs-dark");
-  const codeRef = useRef();
+  const codeRef = useRef(code);
 
   const onChangeCode = (newCode) => {
     codeRef.current = newCode;
@@ -59,6 +68,8 @@ export const EditorContainer = () => {
   };
 
   const onChangeLanguage = (e) => {
+    updateLanguage(fileId, folderId, e.target.value);
+    setCode(getDefaultCode(fileId, folderId));
     setLanguage(e.target.value);
   };
 

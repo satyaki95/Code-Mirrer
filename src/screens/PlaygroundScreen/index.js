@@ -45,7 +45,7 @@ export const PlaygroundScreen = () => {
       </div>
       <div className="content-container">
         <div className="editor-container">
-          <EditorContainer />
+          <EditorContainer fileId={fileId} folderId={folderId} />
         </div>
         <div className="input-output-container">
           <div className="input-header">
