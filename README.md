@@ -2,7 +2,7 @@
 
 ## Demo
 
-[<img src="/src/assets/codedeck.png" alt="Home Page"/>]()
+[<img src="/src/assets/codedeck.png" alt="Home Page"/>]("https://code-deck.vercel.app")
 
 ## Project Objective
 
